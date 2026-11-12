@@ -1,0 +1,9 @@
+# Dataset private kelompok (format YOLO). Kelas diurutkan sama dengan tomatOD.
+path: .
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: mentah
+  1: setengah_matang
+  2: matang

@@ -4,6 +4,8 @@ data/*
 !data/README.md
 !data/tomatod/
 !data/tomatod/**
+!data/private/
+!data/private/**
 *.zip
 *.tar
 *.gz

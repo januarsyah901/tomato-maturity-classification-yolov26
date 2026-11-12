@@ -30,7 +30,8 @@ model-tomat/
 |-- notebooks/
 |   |-- tomato_yolov26_reproduce.ipynb          # Reproduce paper (B3-B6), data VegNet
 |   |-- tomato_yolov26_private_scenarios.ipynb  # 4 skenario klasifikasi, data private
-|   `-- tomato_yolov26_tomatod_detection.ipynb  # 4 skenario deteksi, data tomatOD
+|   |-- tomato_yolov26_tomatod_detection.ipynb  # 4 skenario deteksi, data tomatOD
+|   `-- tomato_yolov26_private_detection.ipynb  # 4 skenario deteksi, data private (Roboflow)
 |-- data/
 |   |-- README.md                               # Panduan dataset VegNet
 |   `-- tomatod/                                # tomatOD format YOLO (CC BY-NC-SA 4.0)
@@ -39,7 +40,7 @@ model-tomat/
     `-- 2606.03748v1.pdf                        # Paper arsitektur YOLO26 (arXiv)
 ```
 
-Catatan: dataset VegNet dan data private tidak disimpan di Git. Hanya `data/tomatod/` yang ikut di repo. Bobot model (`*.pt`) dan `runs/` juga tidak di-commit.
+Catatan: dataset VegNet tidak disimpan di Git. `data/tomatod/` dan `data/private/` ikut di repo. Bobot model (`*.pt`) dan `runs/` juga tidak di-commit.
 
 ---
 
@@ -53,6 +54,10 @@ Catatan: dataset VegNet dan data private tidak disimpan di Git. Hanya `data/toma
 4. Train from scratch
 
 Buka di Colab (GPU T4), upload zip data private (folder per kelas atau `train/val/test`), lalu Run all.
+
+### Notebook deteksi data private
+
+`notebooks/tomato_yolov26_private_detection.ipynb` menjalankan empat skenario yang sama (ditambah skenario 5: latih di tomatOD, uji di 40 gambar private) pada `data/private/` (Roboflow `tomat-tomat` v2, 40 gambar, kelas `mentah`, `setengah_matang`, `matang`, split 24/8/8). Kelas `matang` hanya 32 objek dan semua gambar berasal dari satu sesi, jadi hasilnya indikatif.
 
 ---
 
