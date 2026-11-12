@@ -1,0 +1,9 @@
+# tomatOD (YOLO format). Ganti `path` sesuai lokasi folder ini (notebook menulis ulang otomatis).
+path: .
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: unripe
+  1: semi-ripe
+  2: fully-ripe

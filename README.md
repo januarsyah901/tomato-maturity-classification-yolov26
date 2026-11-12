@@ -25,7 +25,8 @@ Proyek ini mengimplementasikan klasifikasi tingkat kematangan buah tomat menggun
 ```text
 tomato-maturity-classification-yolov26/
 |-- tomato_yolov26_reproduce.ipynb   # Notebook eksperimen utama (B3-B6)
-|-- tomato_yolov26_private_scenarios.ipynb  # 4 skenario pada data private
+|-- tomato_yolov26_private_scenarios.ipynb  # 4 skenario klasifikasi pada data private
+|-- tomato_yolov26_tomatod_detection.ipynb  # 4 skenario deteksi pada tomatOD
 |-- README.md                        # Dokumentasi proyek
 |-- requirements.txt                 # Dependensi Python
 |-- .gitignore                       # Berkas yang dikecualikan dari Git
@@ -50,6 +51,12 @@ Catatan: Direktori data/dataset tidak disimpan langsung di repository Git untuk 
 4. Train from scratch
 
 Buka di Colab (GPU T4), upload zip data private (folder per kelas atau `train/val/test`), lalu Run all.
+
+---
+
+## Notebook Deteksi tomatOD (4 Skenario)
+
+`tomato_yolov26_tomatod_detection.ipynb` menjalankan empat skenario deteksi objek (`yolo26n`) pada dataset tomatOD (277 gambar, kelas `unripe`, `semi-ripe`, `fully-ripe`). Dataset sudah dikonversi ke format YOLO dan disimpan di `data/tomatod/` (lisensi CC BY-NC-SA 4.0, lihat `data/tomatod/README.md`). Notebook mengkloning repo ini sendiri, jadi cukup buka di Colab (GPU T4) dan Run all.
 
 ---
 

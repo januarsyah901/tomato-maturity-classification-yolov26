@@ -2,6 +2,8 @@
 dataset/
 data/*
 !data/README.md
+!data/tomatod/
+!data/tomatod/**
 *.zip
 *.tar
 *.gz
