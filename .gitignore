@@ -32,3 +32,10 @@ desktop.ini
 tugas.md
 arsitektur dan topik.md
 LAPORAN_TAHAP_B.md
+
+# Umum (RULES.md)
+*.log
+.env
+.env.*
+!.env.example
+.venv/

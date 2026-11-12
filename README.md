@@ -23,27 +23,29 @@ Proyek ini mengimplementasikan klasifikasi tingkat kematangan buah tomat menggun
 ## Struktur Repository
 
 ```text
-tomato-maturity-classification-yolov26/
-|-- tomato_yolov26_reproduce.ipynb   # Notebook eksperimen utama (B3-B6)
-|-- tomato_yolov26_private_scenarios.ipynb  # 4 skenario klasifikasi pada data private
-|-- tomato_yolov26_tomatod_detection.ipynb  # 4 skenario deteksi pada tomatOD
-|-- README.md                        # Dokumentasi proyek
-|-- requirements.txt                 # Dependensi Python
-|-- .gitignore                       # Berkas yang dikecualikan dari Git
-|-- paper/
-|   |-- 1-s2.0-S2352340922008629-main.pdf   # Paper dataset VegNet (Elsevier)
-|   `-- 2606.03748v1.pdf                    # Paper resmi arsitektur YOLO26 (arXiv)
-`-- data/
-    `-- README.md                    # Dokumentasi dan panduan dataset
+model-tomat/
+|-- README.md
+|-- requirements.txt
+|-- .gitignore
+|-- notebooks/
+|   |-- tomato_yolov26_reproduce.ipynb          # Reproduce paper (B3-B6), data VegNet
+|   |-- tomato_yolov26_private_scenarios.ipynb  # 4 skenario klasifikasi, data private
+|   `-- tomato_yolov26_tomatod_detection.ipynb  # 4 skenario deteksi, data tomatOD
+|-- data/
+|   |-- README.md                               # Panduan dataset VegNet
+|   `-- tomatod/                                # tomatOD format YOLO (CC BY-NC-SA 4.0)
+`-- paper/
+    |-- 1-s2.0-S2352340922008629-main.pdf       # Paper dataset VegNet (Elsevier)
+    `-- 2606.03748v1.pdf                        # Paper arsitektur YOLO26 (arXiv)
 ```
 
-Catatan: Direktori data/dataset tidak disimpan langsung di repository Git untuk menjaga ukuran repositori tetap ringan. Dataset diunduh secara terpisah atau dipersiapkan saat menjalankan notebook.
+Catatan: dataset VegNet dan data private tidak disimpan di Git. Hanya `data/tomatod/` yang ikut di repo. Bobot model (`*.pt`) dan `runs/` juga tidak di-commit.
 
 ---
 
 ## Notebook Data Private (4 Skenario)
 
-`tomato_yolov26_private_scenarios.ipynb` menjalankan empat skenario pada data private dengan split, `imgsz`, `epochs`, `batch` dan `seed` yang sama:
+`notebooks/tomato_yolov26_private_scenarios.ipynb` menjalankan empat skenario pada data private dengan split, `imgsz`, `epochs`, `batch` dan `seed` yang sama:
 
 1. Inference pretrained tanpa training (langsung, dan dengan pemetaan label dari data train)
 2. Fine-tune head only dengan variasi optimizer dan `lr0`
@@ -56,7 +58,7 @@ Buka di Colab (GPU T4), upload zip data private (folder per kelas atau `train/va
 
 ## Notebook Deteksi tomatOD (4 Skenario)
 
-`tomato_yolov26_tomatod_detection.ipynb` menjalankan empat skenario deteksi objek (`yolo26n`) pada dataset tomatOD (277 gambar, kelas `unripe`, `semi-ripe`, `fully-ripe`). Dataset sudah dikonversi ke format YOLO dan disimpan di `data/tomatod/` (lisensi CC BY-NC-SA 4.0, lihat `data/tomatod/README.md`). Notebook mengkloning repo ini sendiri, jadi cukup buka di Colab (GPU T4) dan Run all.
+`notebooks/tomato_yolov26_tomatod_detection.ipynb` menjalankan empat skenario deteksi objek (`yolo26n`) pada dataset tomatOD (277 gambar, kelas `unripe`, `semi-ripe`, `fully-ripe`). Dataset sudah dikonversi ke format YOLO dan disimpan di `data/tomatod/` (lisensi CC BY-NC-SA 4.0, lihat `data/tomatod/README.md`). Notebook mengkloning repo ini sendiri, jadi cukup buka di Colab (GPU T4) dan Run all.
 
 ---
 
@@ -93,7 +95,7 @@ Buka di Colab (GPU T4), upload zip data private (folder per kelas atau `train/va
 ### 1. Google Colab (Disarankan)
 
 Buka notebook langsung di Google Colab:
-https://colab.research.google.com/github/akmalmanggala/tomato-maturity-classification-yolov26/blob/main/tomato_yolov26_reproduce.ipynb
+https://colab.research.google.com/github/januarsyah901/tomato-maturity-classification-yolov26/blob/main/notebooks/tomato_yolov26_reproduce.ipynb
 
 Langkah eksekusi:
 1. Pastikan runtime menggunakan hardware acceleration GPU (T4 GPU).
@@ -104,10 +106,10 @@ Langkah eksekusi:
 ### 2. Lingkungan Lokal
 
 ```bash
-git clone https://github.com/akmalmanggala/tomato-maturity-classification-yolov26.git
-cd tomato-maturity-classification-yolov26
+git clone https://github.com/januarsyah901/tomato-maturity-classification-yolov26.git model-tomat
+cd model-tomat
 pip install -r requirements.txt
-jupyter notebook tomato_yolov26_reproduce.ipynb
+jupyter notebook notebooks/
 ```
 
 ---
